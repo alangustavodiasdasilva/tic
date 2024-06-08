@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuhlmann - Verificação, Calibração e Inspeção</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f8f8f8;
+        }
+        .header {
+            font-size: 24px;
+            padding: 20px 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .toggle-button {
+            font-size: 18px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #333;
+            padding-top: 80px;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            text-align: left;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .content {
+            padding: 80px 20px 20px 20px;
+            transition: margin-left 0.3s;
+            margin-left: 0;
+        }
+        .content.sidebar-open {
+            margin-left: 250px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Kuhlmann</h1>
+</div>
+<button class="toggle-button" onclick="toggleSidebar()">☰ Menu</button>
+
+<div class="sidebar" id="sidebar">
+    <a href="#" onclick="showTab('verificacao')">Verificação</a>
+    <a href="#" onclick="showTab('calibracao')">Calibração</a>
+    <a href="#" onclick="showTab('inspecao')">Inspeção</a>
+    <a href="#" onclick="showTab('servicos')">Serviços</a>
+    <a href="#" onclick="showTab('setores')">Setores</a>
+    <a href="#" onclick="showTab('recursos')">Recursos</a>
+    <a href="#" onclick="showTab('ferramentas')">Ferramentas</a>
+    <a href="#" onclick="showTab('suporte')">Suporte</a>
+</div>
+
+<div class="content" id="content">
+    <div id="verificacao" class="tab-content">
+        <h2>Verificação</h2>
+        <ul>
+            <li>Documentos</li>
+            <li>Certificações</li>
+            <li>Procedimentos</li>
+        </ul>
+    </div>
+    <div id="calibracao" class="tab-content">
+        <h2>Calibração</h2>
+        <ul>
+            <li>Equipamentos</li>
+            <li>Padrões</li>
+            <li>Serviços</li>
+            <li>Relatórios</li>
+        </ul>
+    </div>
+    <div id="inspecao" class="tab-content">
+        <h2>Inspeção</h2>
+        <ul>
+            <li>Equipamentos</li>
+            <li>Processos</li>
+            <li>Qualidade</li>
+            <li>Conformidade</li>
+        </ul>
+    </div>
+    <div id="servicos" class="tab-content">
+        <h2>Serviços</h2>
+        <ul>
+            <li>Consultoria</li>
+            <li>Treinamentos</li>
+            <li>Auditorias</li>
+        </ul>
+    </div>
+    <div id="setores" class="tab-content">
+        <h2>Setores</h2>
+        <ul>
+            <li>Industrial</li>
+            <li>Comercial</li>
+            <li>Residencial</li>
+            <li>Automotivo</li>
+        </ul>
+    </div>
+    <div id="recursos" class="tab-content">
+        <h2>Recursos</h2>
+        <ul>
+            <li>Artigos</li>
+            <li>Tutoriais</li>
+            <li>Webinars</li>
+            <li>FAQs</li>
+        </ul>
+    </div>
+    <div id="ferramentas" class="tab-content">
+        <h2>Ferramentas</h2>
+        <ul>
+            <li>Calculadoras</li>
+            <li>Modelos de Relatórios</li>
+            <li>Software</li>
+        </ul>
+    </div>
+    <div id="suporte" class="tab-content">
+        <h2>Suporte</h2>
+        <ul>
+            <li>Atendimento ao Cliente</li>
+            <li>Base de Conhecimento</li>
+            <li>Contato</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function toggleSidebar() {
+        var sidebar = document.getElementById("sidebar");
+        var content = document.getElementById("content");
+        if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+            sidebar.style.display = 'block';
+            content.classList.add('sidebar-open');
+        } else {
+            sidebar.style.display = 'none';
+            content.classList.remove('sidebar-open');
+        }
+    }
+
+    function showTab(tabId) {
+        var tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(function(tab) {
+            if (tab.id === tabId) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
